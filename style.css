@@ -1,6 +1,6 @@
 /* navbar */
 .logo {
-  width: 100px;
+  width: 150px;
 }
 .navbar {
   background-color: #fff;
@@ -36,4 +36,11 @@
   background-color: #fff;
   color: #00ff00;
   opacity: 0.5;
+}
+
+/* main */
+
+.badge {
+  background-color: #fbe50a !important;
+  color: black !important;
 }
