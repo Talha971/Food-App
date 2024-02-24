@@ -32,25 +32,109 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <form class="d-flex gap-2">
-              <button class="btn btn-outline-primary" type="submit">
-                Login
-              </button>
-              <button class="btn btn-primary" type="submit">Register</button>
-            </form>
+            <div class="d-flex gap-2">
+              <a href="login.html">
+                <button class="btn btn-outline-primary">Login</button></a
+              >
+              <a href="register.html"
+                ><button class="btn btn-primary">Register</button></a
+              >
+            </div>
           </div>
         </div>
       </nav>
     </header>
+
     <main>
       <div class="row px-2 py-4">
-        <div class="card w-100">
+        <div class="col">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Button</a>
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="mb-4">
+                    <img
+                      width="200"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3BcogqOSDvFkYR7jE_mz_NQ94rxCsySE4aw&usqp=CAU"
+                      alt=""
+                    />
+                  </div>
+                  <h5 class="card-title">Saylani Foods</h5>
+                  <p class="card-text">All Variety Available</p>
+                  <p>
+                    <span class="badge rounded-pill bg-primary">Biryani</span>
+                    <span class="badge rounded-pill bg-primary">Karahi</span>
+                    <span class="badge rounded-pill bg-primary">Drinks</span>
+                  </p>
+                </div>
+                <div class="social-icons gap-4">
+                  <i class="fa-brands fa-facebook"></i>
+                  <i class="fa-brands fa-instagram"></i>
+                  <i class="fa-brands fa-youtube"></i>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="row px-2 py-4">
+        <div class="col-8">
+          <div class="card dish-card w-100 mb-3">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                  <img class="dish-img" src="./images/biryani.jpg" alt="" />
+                  <div class="p-2">
+                    <h5 class="card-title">Chicken Biryani</h5>
+                    <h3 class="card-title">Rs 200 /-</h3>
+                    <p class="card-text">Serves 1-2 persons</p>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-2">
+                  <button class="qty-btn">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <span class="fw-bold">1</span>
+                  <button class="qty-btn">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+
+                  <a href="#" class="btn btn-primary">Add To Cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card text-center">
+            <div class="card-header"><b>Cart</b></div>
+            <div class="card-body">
+              <!-- <div>No data available</div> -->
+              <div class="card dish-card w-100 mb-3">
+                <div class="card-body">
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <div class="d-flex align-items-center">
+                      <img class="dish-img" src="./images/biryani.jpg" alt="" />
+                      <div class="p-2">
+                        <h5 class="card-title">Chicken Biryani</h5>
+                        <h3 class="card-title">Rs 200 /-</h3>
+                        <p class="card-text">Serves 1-2 persons</p>
+                      </div>
+                    </div>
+                    <a href="#" class="btn btn-primary">
+                      <i class="fa-solid fa-trash"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="btn btn-primary">Checkout</a>
+          </div>
+        </div>
       </div>
     </main>
 
@@ -59,7 +143,10 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://kit.fontawesome.com/8975ac1577.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="app.js"></script>
-
   </body>
 </html>
