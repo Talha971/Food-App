@@ -70,8 +70,92 @@
         <div class="">
           <h2>Restaurants</h2>
         </div>
-        <div class="">
-          <button class="btn btn-primary">Add new Restaurants</button>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Add New Restarant
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Add New Restaurant
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Restaurant Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="restaurant-name"
+                    placeholder="Enter name"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label"
+                    >Restaurant Address</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="restaurant-address"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="formFile" class="form-label"
+                    >Restaurant Logo</label
+                  >
+                  <input
+                    class="form-control"
+                    type="file"
+                    id="restaurant-logo"
+                  />
+                </div>
+                <div class="mb-3">
+                  <img
+                    class="selected-logo"
+                    id="selected-logo"
+                    width="100px"
+                    height="100px"
+                    src=""
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" id="submit-restaurant" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -118,6 +202,7 @@
       src="https://kit.fontawesome.com/8975ac1577.js"
       crossorigin="anonymous"
     ></script>
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
+    <script src="js/restaurant.js" type="module"></script>
   </body>
 </html>

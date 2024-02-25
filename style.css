@@ -81,3 +81,8 @@
   font-size: 20px;
   color: #ff2806;
 }
+
+/* restaurant.html */
+.selected-logo {
+  display: none;
+}
