@@ -8,8 +8,6 @@ logo && logo.addEventListener("change", (e) => {
     selectedLogo.src = URL.createObjectURL(e.target.files[0])
 })
 
-
-
 const uploadFile = (file, name) => {
     return new Promise((resolve, reject) => {
         const fileName = file.name

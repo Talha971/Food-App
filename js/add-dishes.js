@@ -34,45 +34,64 @@ const uploadFile = (file, name) => {
     })
 }
 
-const getAllRestaurants = async () => {
-    const resSelect = document.getElementById("restaurant-name");
-    resSelect.innerHTML = `<option selected>Select Restaurant</option>`
-    const q = collection(db, "restaurant");
-    let index = 0
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        index++
-        console.log(doc.id, " => ", doc.data());
-        resSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`
 
-    });
+
+const getAllRestaurants = async () => {
+    try {
+        const q = collection(db, "restaurant");
+        const querySnapshot = await getDocs(q);
+        const resSelect = document.getElementById("restaurant-name");
+        resSelect.innerHTML = `<option selected>Select Restaurant</option>`
+        let index = 0
+        let restaurants = []
+        querySnapshot.forEach((doc) => {
+            restaurants.push({ ...doc.data(), id: doc.id })
+            console.log(doc.id, " => ", doc.data());
+            index++
+            resSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`
+        });
+        return new Promise((resolve, reject) => {
+            resolve(restaurants);
+        })
+    }
+    catch (err) {
+        console.log("err:", err)
+
+    }
 }
 getAllRestaurants();
 
 
 const getAllDishes = async () => {
+    const restaurants = await getAllRestaurants()
+    console.log("restaurants", restaurants);
     const allDishes = document.getElementById("all-dishes");
-    allDishes.innerHTML = ``
     const q = collection(db, "dishes");
-    let index = 0
     const querySnapshot = await getDocs(q);
+    let index = 0
+    let restaurantNames = {}
+    for (let i = 0; i < restaurants.length; i++) {
+        restaurantNames[restaurants[i].id] = restaurants[i].name
+    }
+    console.log('rrrrr', restaurantNames);
+    allDishes.innerHTML = ``
     querySnapshot.forEach((doc) => {
-        index++
+        index++;
+
         console.log(doc.id, " => ", doc.data());
         allDishes.innerHTML += `
         <tr>
-            <th scope="row">1</th>
+            <th scope="row">${index}</th>
             <td><img class="dish-image" src="${doc.data().image}" alt="" /></td>
             <td>${doc.data().name}</td>
             <td>${doc.data().price}</td>
             <td>${doc.data().serving}</td>
-            <td>@mdo</td>
+            <td>${restaurantNames[doc.data().restaurant]}</td>
         </tr>`
 
     });
 }
-getAllDishes();
-
+getAllDishes()
 
 const addDish = document.getElementById("addDish")
 addDish.addEventListener("click", async () => {
