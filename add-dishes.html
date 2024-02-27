@@ -33,18 +33,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a
-                  href="dashboard.html"
-                  class="nav-link "
-                  aria-current="page"
+                <a href="dashboard.html" class="nav-link" aria-current="page"
                   >Dashboard</a
                 >
               </li>
               <li class="nav-item">
-                <a
-                  href="restaurants.html"
-                  class="nav-link "
-                  aria-current="page"
+                <a href="restaurants.html" class="nav-link" aria-current="page"
                   >Restaurant</a
                 >
               </li>
@@ -57,9 +51,7 @@
                 >
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link " aria-current="page"
-                  >Orders</a
-                >
+                <a href="" class="nav-link" aria-current="page">Orders</a>
               </li>
             </ul>
             <div class="d-flex gap-2">
@@ -79,7 +71,116 @@
           <h2>Dishes</h2>
         </div>
         <div class="">
-          <button class="btn btn-primary">Add new dish</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Add New Dish
+          </button>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Add New Dish
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Restaurant Name</label
+                    >
+                    <select
+                      id="restaurant-name"
+                      class="form-select form-select-sm"
+                      aria-label=".form-select-sm example"
+                    ></select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Dish Name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="dish-name"
+                      placeholder="Dish name"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Dish Price</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="dish-price"
+                      placeholder="Dish Price"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >Dish Serving</label
+                    >
+                    <select
+                      id="dish-serving"
+                      class="form-select form-select-sm"
+                      aria-label=".form-select-sm example"
+                    >
+                      <option selected>Select Serving</option>
+                      <option value="1 person">1 person</option>
+                      <option value="2 person">2 person</option>
+                      <option value="3 person">3 person</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Dish Image</label>
+                    <input class="form-control" type="file" id="dish-image" />
+                  </div>
+                  <div class="mb-3">
+                    <img
+                      class="selected-logo"
+                      id="selected-logo"
+                      width="100px"
+                      height="100px"
+                      src=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    id="close-btn"
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="button" id="addDish" class="btn btn-primary">
+                    <div id="dish-spinner" class="spinner-border" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -89,35 +190,14 @@
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">Dish Image</th>
               <th scope="col">Dish Name</th>
               <th scope="col">Price</th>
               <th scope="col">Serving</th>
               <th scope="col">Restaurant</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@mdo</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry the Bird</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
+          <tbody id="all-dishes"></tbody>
         </table>
       </div>
     </main>
@@ -130,6 +210,6 @@
       src="https://kit.fontawesome.com/8975ac1577.js"
       crossorigin="anonymous"
     ></script>
-    <script src="app.js"></script>
+    <script src="./js/add-dishes.js" type="module"></script>
   </body>
 </html>

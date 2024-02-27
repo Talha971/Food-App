@@ -2,7 +2,7 @@ import { storage, ref, uploadBytesResumable, getDownloadURL, db, collection, add
 const logo = document.getElementById("restaurant-logo")
 const selectedLogo = document.getElementById("selected-logo")
 let file;
-logo.addEventListener("change", (e) => {
+logo && logo.addEventListener("change", (e) => {
     file = e.target.files[0]
     selectedLogo.style.display = "block"
     selectedLogo.src = URL.createObjectURL(e.target.files[0])
@@ -68,7 +68,7 @@ getAllRestaurants();
 
 const submitRestaurant = document.getElementById("submit-restaurant")
 
-submitRestaurant.addEventListener("click", async () => {
+submitRestaurant && submitRestaurant.addEventListener("click", async () => {
     const name = document.getElementById("restaurant-name")
     const spinner = document.getElementById("restaurant-spinner")
     const address = document.getElementById("restaurant-address")
@@ -93,3 +93,5 @@ submitRestaurant.addEventListener("click", async () => {
     getAllRestaurants()
     closeBtn.click()
 })
+
+export { uploadFile }

@@ -97,15 +97,18 @@
   height: 20px;
   font-size: 10px;
 }
-#submit-restaurant {
+#submit-restaurant,
+#addDish {
   display: flex;
   align-items: center;
   gap: 4px;
 }
-#restaurant-spinner {
+#restaurant-spinner,
+#dish-spinner {
   display: none;
 }
-.res-logo-image {
+.res-logo-image,
+.dish-image {
   width: 30px;
   height: 30px;
   border-radius: 15px;
