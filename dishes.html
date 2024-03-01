@@ -46,66 +46,141 @@
     </header>
 
     <main>
-      <div class="row px-2 py-4">
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <div class="mb-4">
-                    <img
-                      width="200"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3BcogqOSDvFkYR7jE_mz_NQ94rxCsySE4aw&usqp=CAU"
-                      alt=""
-                    />
+      <!-- spinner -->
+      <div id="spinner-div" class="my-3 text-center">
+        <div class="spinner-border page-spinner" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <!-- main working -->
+      <div style="display: none" id="main-content">
+        <div class="row px-2 py-4">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="mb-4">
+                      <img
+                        id="res-image"
+                        width="200"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3BcogqOSDvFkYR7jE_mz_NQ94rxCsySE4aw&usqp=CAU"
+                        alt=""
+                      />
+                    </div>
+                    <h5 class="card-title" id="res-name"></h5>
+                    <p class="card-text" id="res-address"></p>
+                    <p>
+                      <span class="badge rounded-pill bg-primary">Biryani</span>
+                      <span class="badge rounded-pill bg-primary">Karahi</span>
+                      <span class="badge rounded-pill bg-primary">Drinks</span>
+                    </p>
                   </div>
-                  <h5 class="card-title">Saylani Foods</h5>
-                  <p class="card-text">All Variety Available</p>
-                  <p>
-                    <span class="badge rounded-pill bg-primary">Biryani</span>
-                    <span class="badge rounded-pill bg-primary">Karahi</span>
-                    <span class="badge rounded-pill bg-primary">Drinks</span>
-                  </p>
-                </div>
-                <div class="social-icons gap-4">
-                  <i class="fa-brands fa-facebook"></i>
-                  <i class="fa-brands fa-instagram"></i>
-                  <i class="fa-brands fa-youtube"></i>
+                  <div class="social-icons gap-4">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="row px-2 py-4">
-        <div id="all-dishes" class="col-8"></div>
-        <div class="col-4">
-          <div class="card text-center">
-            <div class="card-header"><b>Cart</b></div>
-            <div class="card-body">
-              <!-- <div>No data available</div> -->
-              <div class="card dish-card w-100 mb-3">
-                <div class="card-body">
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <div class="d-flex align-items-center">
-                      <img class="dish-img" src="./images/biryani.jpg" alt="" />
-                      <div class="p-2">
-                        <h5 class="card-title">Chicken Biryani</h5>
-                        <h3 class="card-title">Rs 200 /-</h3>
-                        <p class="card-text">Serves 1-2 persons</p>
+        <div class="row px-2 py-4">
+          <div id="all-dishes" class="col-8"></div>
+          <div class="col-4">
+            <div class="card text-start">
+              <div class="card-header"><b>Cart</b></div>
+              <div id="cart" class="card-body"></div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                Checkout
+              </button>
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Checkout
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Name</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="customerName"
+                          placeholder="Enter name"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Contact number</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="customerContact"
+                          placeholder="Enter Contact number"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label
+                          for="exampleFormControlTextarea1"
+                          class="form-label"
+                          >Address</label
+                        >
+                        <textarea
+                          class="form-control"
+                          id="customerAddress"
+                          rows="3"
+                        ></textarea>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <span>Total Amount</span>
+                        <span class="fw-bold" id="totalAmount">Rs 300/-</span>
                       </div>
                     </div>
-                    <a href="#" class="btn btn-primary">
-                      <i class="fa-solid fa-trash"></i
-                    ></a>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        id="placeOrder"
+                        type="button"
+                        class="btn btn-primary"
+                      >
+                        Place order
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <a href="#" class="btn btn-primary">Checkout</a>
           </div>
         </div>
       </div>
@@ -120,6 +195,8 @@
       src="https://kit.fontawesome.com/8975ac1577.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script src="./js/dishes.js" type="module"></script>
+    <script src="./js/order.js" type="module"></script>
   </body>
 </html>

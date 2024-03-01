@@ -29,6 +29,8 @@ loginBtn && loginBtn.addEventListener("click", login)
 
 
 
+const pageSpinner = document.getElementById("spinner-div");
+// pageSpinner.style.display = "block"
 
 const getAllRestaurants = async () => {
   const resList = document.getElementById("res-list")
@@ -37,30 +39,31 @@ const getAllRestaurants = async () => {
   let index = 0
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
+    pageSpinner.style.display = "none"
     console.log(doc.id, " => ", doc.data());
     resList.innerHTML += `
-        <div class="col">
-          <div class="card" style="width: 18rem">
-            <img
-              src="${doc.data().image}"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">${doc.data().name}</h5>
-
-              <p class="card-text">All variety of biryani</p>
+    <div class="col">
+    <div class="card" style="width: 18rem">
+    <img
+    src="${doc.data().image}"
+    class="card-img-top"
+    alt="..."
+    />
+    <div class="card-body">
+    <h5 class="card-title">${doc.data().name}</h5>
+    
+    <p class="card-text">All variety of biryani</p>
               <p>
-                <span class="badge rounded-pill bg-primary">Biryani</span>
-                <span class="badge rounded-pill bg-primary">Karahi</span>
+              <span class="badge rounded-pill bg-primary">Biryani</span>
+              <span class="badge rounded-pill bg-primary">Karahi</span>
                 <span class="badge rounded-pill bg-primary">Drinks</span>
-              </p>
-
-              <a href="dishes.html?restaurant=${doc.id}" class="btn btn-primary">View all dishes</a>
-            </div>
-          </div>
-        </div>
-`
+                </p>
+                
+                <a href="dishes.html?restaurant=${doc.id}" class="btn btn-primary">View all dishes</a>
+                </div>
+                </div>
+                </div>
+                `
 
   });
 }
