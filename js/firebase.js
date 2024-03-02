@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from
     "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from
@@ -26,7 +26,7 @@ const db = getFirestore(app);
 
 
 export {
-    auth, signInWithEmailAndPassword, onAuthStateChanged,
+    auth, signInWithEmailAndPassword,createUserWithEmailAndPassword, onAuthStateChanged,
     storage, ref, uploadBytesResumable, getDownloadURL,
     db, collection, addDoc, query, where, getDocs, getDoc, doc, serverTimestamp, updateDoc
 }

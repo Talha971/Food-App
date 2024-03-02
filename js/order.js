@@ -3,67 +3,67 @@ import { collection, getDocs, db, where, query, getDoc, doc, serverTimestamp, ad
 
 const placeOrder = document.getElementById("placeOrder")
 placeOrder && placeOrder.addEventListener("click", async () => {
-    const cartDiv = document.getElementById("cart")
-    const customerName = document.getElementById("customerName")
-    const customerContact = document.getElementById("customerContact")
-    const customerAddress = document.getElementById("customerAddress")
-    const cart = JSON.parse(localStorage.getItem("cart"))
-    const sum = cart.reduce((a, b) => a + Number(b.price) * b.qty, 0)
-    const totalAmount = document.getElementById("totalAmount")
-    const closeBtn = document.getElementById("closeBtn")
+  const cartDiv = document.getElementById("cart")
+  const customerName = document.getElementById("customerName")
+  const customerContact = document.getElementById("customerContact")
+  const customerAddress = document.getElementById("customerAddress")
+  const cart = JSON.parse(localStorage.getItem("cart"))
+  const sum = cart.reduce((a, b) => a + Number(b.price) * b.qty, 0)
+  const totalAmount = document.getElementById("totalAmount")
+  const closeBtn = document.getElementById("closeBtn")
 
-    console.log(customerName.value, customerContact.value, customerAddress.value, cart);
+  console.log(customerName.value, customerContact.value, customerAddress.value, cart);
 
-    const orderDetail = {
-        customerName: customerName.value,
-        customerContact: customerContact.value,
-        customerAddress: customerAddress.value,
-        status: "pending",
-        cart,
-        timeStamp: serverTimestamp(),
-        orderAmount: sum,
-        deliveryCharges: 100,
-        totalAmount: sum + 100
-    }
-    await addDoc(collection(db, "orders"), orderDetail);
-    Swal.fire({
-        position: "center-center",
-        icon: "success",
-        title: "Your order has been placed",
-        showConfirmButton: false,
-        timer: 1500,
-    });
+  const orderDetail = {
+    customerName: customerName.value,
+    customerContact: customerContact.value,
+    customerAddress: customerAddress.value,
+    status: "pending",
+    cart,
+    timeStamp: serverTimestamp(),
+    orderAmount: sum,
+    deliveryCharges: 100,
+    totalAmount: sum + 100
+  }
+  await addDoc(collection(db, "orders"), orderDetail);
+  Swal.fire({
+    position: "center-center",
+    icon: "success",
+    title: "Your order has been placed",
+    showConfirmButton: false,
+    timer: 1500,
+  });
 
-    customerAddress.value = ''
-    customerContact.value = ''
-    customerName.value = ''
-    localStorage.removeItem('cart')
-    cartDiv.innerHTML = ''
-    totalAmount.innerHTML = ``
-    closeBtn.click()
+  customerAddress.value = ''
+  customerContact.value = ''
+  customerName.value = ''
+  localStorage.removeItem('cart')
+  cartDiv.innerHTML = ''
+  totalAmount.innerHTML = ``
+  closeBtn.click()
 
 })
 
 const getAllOrder = async () => {
-    const allOrders = document.getElementById("all-orders")
-    const mainContent = document.getElementById("main-content")
-    const pageSpinner = document.getElementById("spinner-div")
-    const q = collection(db, "orders");
-    let index = 0
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        index++
-        console.log("order", doc.data());
-        let status = doc.data().status
-        let statusColor = ''
-        if (status === "pending") {
-            statusColor = "bg-warning"
-        }
-        else if (status === "delivered") {
-            statusColor = "bg-success"
-        }
+  const allOrders = document.getElementById("all-orders")
+  const mainContent = document.getElementById("main-content")
+  const pageSpinner = document.getElementById("spinner-div")
+  const q = collection(db, "orders");
+  let index = 0
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    index++
+    console.log("order", doc.data());
+    let status = doc.data().status
+    let statusColor = ''
+    if (status === "pending") {
+      statusColor = "bg-warning"
+    }
+    else if (status === "delivered") {
+      statusColor = "bg-success"
+    }
 
-        allOrders.innerHTML += `
+    allOrders.innerHTML += `
         <tr>
             <th scope="row">${index}</th>
             <td>${doc.data().customerName}</td>
@@ -85,26 +85,26 @@ const getAllOrder = async () => {
 
         </tr>
     `
-    })
-    pageSpinner.style.display = "none"
-    mainContent.style.display = "block"
+  })
+  pageSpinner.style.display = "none"
+  mainContent.style.display = "block"
 }
 getAllOrder();
 let updateOrderId
 const viewOrderDetail = async (id) => {
-    updateOrderId = id
-    const cart = document.getElementById("cart")
-    const orderStatus = document.getElementById("orderStatus")
-    const docRef = doc(db, "orders", id);
-    const docSnap = await getDoc(docRef);
-    console.log("docSnap", docSnap.data());
-    orderStatus.value = docSnap.data().status
+  updateOrderId = id
+  const cart = document.getElementById("cart")
+  const orderStatus = document.getElementById("orderStatus")
+  const docRef = doc(db, "orders", id);
+  const docSnap = await getDoc(docRef);
+  console.log("docSnap", docSnap.data());
+  orderStatus.value = docSnap.data().status
 
-    let cartItems = docSnap.data().cart
-    cart.innerHTML = ``
-    for (let i = 0; i < cartItems.length; i++) {
+  let cartItems = docSnap.data().cart
+  cart.innerHTML = ``
+  for (let i = 0; i < cartItems.length; i++) {
 
-        cart.innerHTML += `
+    cart.innerHTML += `
       <div class="card dish-card w-100 mb-3">
       <div class="card-body">
         <div
@@ -127,19 +127,20 @@ const viewOrderDetail = async (id) => {
       </div>
     </div>
       `
-    }
+  }
 }
 const updateOrder = document.getElementById("updateOrder")
 updateOrder.addEventListener("click", async () => {
-    const closeBtn = document.getElementById("close-btn")
-    const orderStatus = document.getElementById("orderStatus")
-    const docRef = doc(db, "orders", updateOrderId);
-    await updateDoc(docRef, {
-        status: orderStatus.value
-    });
-    closeBtn.click()
-    getAllOrder()
-    console.log(updateOrderId);
+  const closeBtn = document.getElementById("close-btn")
+  const orderStatus = document.getElementById("orderStatus")
+  const docRef = doc(db, "orders", updateOrderId);
+  await updateDoc(docRef, {
+    status: orderStatus.value
+  });
+  closeBtn.click()
+  window.location.reload()
+  getAllOrder()
+  console.log(updateOrderId);
 })
 
 

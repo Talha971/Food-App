@@ -48,39 +48,41 @@
     <main>
       <div class="row justify-content-center">
         <div class="col-6">
-          <form class="p-5">
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label"
-                >Email address</label
-              >
-              <input
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
-              <div id="emailHelp" class="form-text">
-                We'll never share your email with anyone else.
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label"
-                >Password</label
-              >
-              <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-              />
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <br />
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
             <div id="emailHelp" class="form-text">
-              already have an account?
-              <a href="register.html">login now</a>
+              We'll never share your email with anyone else.
             </div>
-          </form>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              id="password"
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+
+          <button id="registerBtn" type="submit" class="btn btn-primary">
+            Register
+          </button>
+          <br />
+          <div id="emailHelp" class="form-text">
+            already have an account?
+            <a href="login.html">login now</a>
+          </div>
         </div>
       </div>
     </main>
@@ -94,6 +96,7 @@
       src="https://kit.fontawesome.com/8975ac1577.js"
       crossorigin="anonymous"
     ></script>
-    <script src="app.js"></script>
+    <script src="app.js" type="module"></script>
+    <script src="js/register.js" type="module"></script>
   </body>
 </html>
