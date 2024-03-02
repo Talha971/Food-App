@@ -1,4 +1,4 @@
-import { auth, signInWithEmailAndPassword, collection, getDocs, db } from "./js/firebase.js";
+import { auth, signInWithEmailAndPassword, collection, getDocs, db, onAuthStateChanged } from "./js/firebase.js";
 
 const login = () => {
   const email = document.getElementById("email")
@@ -67,4 +67,11 @@ const getAllRestaurants = async () => {
 
   });
 }
-getAllRestaurants();
+
+
+onAuthStateChanged(auth, (user) => {
+  if ((user && location.pathname.indexOf("restaurants") !== -1) || (location.pathname === "/")) {
+    getAllRestaurants()
+  }
+
+});

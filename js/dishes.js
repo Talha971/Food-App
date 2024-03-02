@@ -93,8 +93,23 @@ const addToCart = (id) => {
   localStorage.setItem('cart', JSON.stringify(cart))
   getCartItems()
   console.log("cart-->", cart);
+
+  const totalAmount = document.getElementById("totalAmount")
   const sum = cart.reduce((a, b) => a + Number(b.price) * b.qty, 0)
   console.log('sum-->', sum);
+  totalAmount.innerHTML = `${sum + 100} /-`
+}
+
+const deleteCartItem = (i) => {
+  const cartItems = JSON.parse(localStorage.getItem('cart'))
+  cartItems.splice(Number(i), 1);
+  localStorage.setItem('cart', JSON.stringify(cartItems))
+  getCartItems()
+  const totalAmount = document.getElementById("totalAmount")
+  const sum = cart.reduce((a, b) => a + Number(b.price) * b.qty, 0)
+  console.log('sum-->', sum);
+  totalAmount.innerHTML = `${sum + 100} /-`
+  console.log(i);
 }
 
 const getCartItems = () => {
@@ -123,7 +138,7 @@ const getCartItems = () => {
               <p class="card-text">${cartItems[i].serving}</p>
             </div>
           </div>
-          <a href="#" class="btn btn-primary">
+          <a href="#" onclick="deleteCartItem('${i}')" class="btn btn-primary">
             <i class="fa-solid fa-trash"></i
           ></a>
         </div>
@@ -137,3 +152,4 @@ getCartItems()
 
 window.updateQty = updateQty
 window.addToCart = addToCart
+window.deleteCartItem = deleteCartItem

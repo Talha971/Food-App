@@ -5,7 +5,7 @@ import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from
     "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-import { getFirestore, addDoc, collection, query, where, getDocs, getDoc, doc, serverTimestamp } from
+import { getFirestore, addDoc, collection, query, where, getDocs, getDoc, doc, serverTimestamp, updateDoc } from
     "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 
@@ -28,7 +28,7 @@ const db = getFirestore(app);
 export {
     auth, signInWithEmailAndPassword, onAuthStateChanged,
     storage, ref, uploadBytesResumable, getDownloadURL,
-    db, collection, addDoc, query, where, getDocs, getDoc, doc, serverTimestamp
+    db, collection, addDoc, query, where, getDocs, getDoc, doc, serverTimestamp, updateDoc
 }
 
 

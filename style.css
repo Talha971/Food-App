@@ -40,7 +40,7 @@
 
 /* index.html */
 
-.badge {
+.text-bg-primary {
   background-color: #fbe50a !important;
   color: black !important;
 }
@@ -53,7 +53,6 @@
   width: 200px !important;
   height: 200px !important;
 }
-
 
 /* dishes.html */
 
